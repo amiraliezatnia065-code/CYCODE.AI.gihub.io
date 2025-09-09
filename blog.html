@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Blog | CYCODE.AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Vazirmatn',sans-serif;}
+body{background:#0a0a0a;color:#fff;line-height:1.8;}
+
+/* Header */
+header{position:fixed;width:100%;background:rgba(0,0,0,0.85);backdrop-filter:blur(12px);z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:15px 30px;}
+header h1{color:#fff;font-size:1.2rem;}
+nav ul{display:flex;list-style:none;gap:15px;}
+nav ul li a{color:#fff;text-decoration:none;padding:8px 12px;border-radius:10px;transition:0.3s;background:rgba(255,255,255,0.05);}
+nav ul li a:hover{background:rgba(255,255,255,0.2);color:#0ff;}
+.hamburger{display:none;cursor:pointer;flex-direction:column;gap:5px;}
+.hamburger div{width:28px;height:3px;background:#fff;transition:0.3s;}
+nav .search-box{position:relative;}
+nav .search-box input{padding:5px 10px;border-radius:12px;border:none;outline:none;display:none;}
+nav .search-box input.show{display:block;position:absolute;right:0;top:40px;background:#222;color:#fff;}
+
+/* Blog Section */
+section{padding:100px 20px 60px;max-width:900px;margin:auto;}
+h2{color:#0ff;text-align:center;margin-bottom:40px;font-size:1.6rem;}
+.blog-post{background:rgba(255,255,255,0.05);padding:20px;border-radius:12px;margin-bottom:25px;transition:0.3s;}
+.blog-post:hover{transform:translateY(-5px);box-shadow:0 0 20px rgba(0,255,255,0.4);}
+.blog-post h3{color:#fff;margin-bottom:10px;}
+.blog-post small{color:#aaa;}
+.blog-post p{margin:15px 0;color:#ddd;}
+.blog-post a{display:inline-block;color:#0ff;text-decoration:none;padding:6px 14px;border:1px solid #0ff;border-radius:8px;transition:0.3s;}
+.blog-post a:hover{background:#0ff;color:#000;}
+
+/* Footer */
+footer{padding:25px;text-align:center;background:#111;color:#777;position:relative;}
+footer a{color:#0ff;text-decoration:none;}
+
+/* Responsive */
+@media(max-width:768px){
+  nav ul{display:none;flex-direction:column;background:rgba(0,0,0,0.95);position:absolute;top:70px;right:25px;padding:12px;border-radius:12px;}
+  nav ul.active{display:flex;}
+  .hamburger{display:flex;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>CYCODE.AI | وبلاگ</h1>
+  <nav>
+    <ul id="navMenu">
+      <li><a href="index.html">صفحه اصلی</a></li>
+      <li><a href="portfolio.html">نمونه کارها</a></li>
+      <li><a href="blog.html">وبلاگ</a></li>
+    </ul>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="جستجو...">
+    </div>
+  </nav>
+  <div class="hamburger" id="hamburger"><div></div><div></div><div></div></div>
+</header>
+
+<section id="blog">
+  <h2>آخرین مقالات</h2>
+
+  <div class="blog-post">
+    <h3>طراحی گرافیک چیست؟</h3>
+    <small>تاریخ: ۱۴ شهریور ۱۴۰۴</small>
+    <p>طراحی گرافیک هنر و علم ترکیب متن و تصویر برای انتقال پیام مؤثر است. خدمات آن شامل طراحی لوگو، بسته‌بندی، کارت ویزیت و ... می‌شود.</p>
+    <a href="#">بیشتر بخوانید</a>
+  </div>
+
+  <div class="blog-post">
+    <h3>تفاوت طراحی رابط کاربری و تجربه کاربری</h3>
+    <small>تاریخ: ۱۰ شهریور ۱۴۰۴</small>
+    <p>رابط کاربری (UI) به طراحی بصری می‌پردازد، اما تجربه کاربری (UX) بر احساس و تعامل کاربر با محصول تمرکز دارد. هر دو مکمل یکدیگرند.</p>
+    <a href="#">بیشتر بخوانید</a>
+  </div>
+
+  <div class="blog-post">
+    <h3>اهمیت رنگ‌ها در برندینگ</h3>
+    <small>تاریخ: ۵ شهریور ۱۴۰۴</small>
+    <p>رنگ‌ها نقش کلیدی در برندسازی دارند. انتخاب درست رنگ می‌تواند باعث اعتماد، افزایش فروش و ماندگاری برند در ذهن مشتری شود.</p>
+    <a href="#">بیشتر بخوانید</a>
+  </div>
+
+</section>
+
+<footer>
+  تمام حقوق این سایت محفوظ است © 2025 | <a href="index.html">بازگشت به صفحه اصلی</a>
+</footer>
+
+<script>
+// منوی همبرگری
+const hamburger=document.getElementById('hamburger');
+const navMenu=document.getElementById('navMenu');
+hamburger.addEventListener('click',()=>{navMenu.classList.toggle('active');});
+// جستجو
+const searchInput=document.getElementById('searchInput');
+document.addEventListener('keydown',(e)=>{
+  if(e.key==="s"){searchInput.classList.toggle('show'); searchInput.focus();}
+});
+</script>
+
+</body>
+</html>

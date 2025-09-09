@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CYCODE.AI | صفحه اصلی</title>
+<style>
+/* پایه و تم سیاه سفید خاکستری */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Vazirmatn',sans-serif;}
+body{background:#111;color:#fff;scroll-behavior:smooth;}
+a{text-decoration:none;color:#fff;}
+
+/* Header */
+header{position:fixed;width:100%;background:rgba(0,0,0,0.85);backdrop-filter:blur(15px);z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:15px 30px;}
+header h1{color:#0ff;font-size:1.2rem;}
+nav ul{display:flex;list-style:none;gap:15px;}
+nav ul li a{padding:8px 12px;border-radius:10px;transition:0.3s;}
+nav ul li a:hover{background:rgba(0,255,255,0.2);color:#0ff;}
+.hamburger{display:none;cursor:pointer;flex-direction:column;gap:5px;}
+.hamburger div{width:28px;height:3px;background:#0ff;}
+
+/* Sections */
+section{padding:120px 20px 60px;}
+h2{text-align:center;color:#0ff;margin-bottom:30px;}
+
+/* سه کارت معرفی */
+.three-cards-container{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:50px;}
+.three-card{background:#222;border-radius:15px;padding:25px;width:250px;text-align:center;box-shadow:0 0 25px rgba(0,255,255,0.3);transition:0.4s;}
+.three-card:hover{transform:scale(1.05) rotateY(5deg);box-shadow:0 0 40px #0ff;}
+
+/* تایم لاین */
+.timeline{position:relative;margin:50px auto;padding:20px;max-width:700px;}
+.timeline::after{content:"";position:absolute;width:4px;background:linear-gradient(#0ff,#0aa);top:0;bottom:0;left:50%;margin-left:-2px;}
+.timeline-item{padding:20px;position:relative;background:#222;border-radius:15px;width:45%;box-shadow:0 0 20px rgba(0,255,255,0.3);}
+.timeline-item.left{left:0;margin-bottom:20px;}
+.timeline-item.right{left:55%;margin-bottom:20px;}
+.timeline-item::after{content:"";position:absolute;width:18px;height:18px;background:#0ff;border-radius:50%;top:20px;right:-10px;}
+.timeline-item.right::after{left:-10px;}
+
+/* نمودار */
+#chartContainer{max-width:700px;margin:50px auto;}
+
+/* نظرات */
+.feedback-list{display:flex;overflow-x:auto;gap:20px;padding:20px;}
+.feedback-card{min-width:260px;background:#222;border-radius:15px;padding:20px;color:#ccc;flex-shrink:0;box-shadow:0 0 25px rgba(0,255,255,0.3);transition:0.3s;}
+.feedback-card:hover{transform:scale(1.05);box-shadow:0 0 35px rgba(0,255,255,0.6);}
+
+/* پلن خرید */
+.pricing-container{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:40px;}
+.pricing-card{background:#222;border-radius:15px;padding:20px;width:250px;box-shadow:0 0 25px rgba(0,255,255,0.3);transition:0.4s;}
+.pricing-card:hover{transform:scale(1.05) rotateY(3deg);box-shadow:0 0 40px rgba(0,255,255,0.6);}
+.pricing-card a{display:block;text-align:center;padding:12px 0;border-radius:10px;background:#0ff;color:#000;font-weight:bold;transition:0.3s;}
+.pricing-card a:hover{background:#0aa;color:#fff;}
+
+/* دانلود رزومه */
+.resume-btn{text-align:center;margin:40px 0;}
+.resume-btn a{padding:15px 40px;border-radius:30px;background:#0ff;color:#000;font-weight:bold;box-shadow:0 0 25px rgba(0,255,255,0.6);transition:0.3s;}
+.resume-btn a:hover{box-shadow:0 0 50px #0ff;}
+
+/* ریسپانسیو */
+@media(max-width:768px){
+  nav ul{display:none;flex-direction:column;background:rgba(0,0,0,0.95);position:absolute;top:70px;right:25px;padding:12px;border-radius:12px;}
+  nav ul.active{display:flex;}
+  .hamburger{display:flex;}
+  .timeline-item{width:100%!important;margin-bottom:20px;}
+  .timeline::after{left:10px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>CYCODE.AI | Sadraezatnia</h1>
+  <nav>
+    <ul id="navMenu">
+      <li><a href="#resume"> دانلود رزومه کاری</a></li>
+      <li><a href="#pricing">پلن خرید</a></li>
+      <li><a href="#feedback">نظر کاربران</a></li>
+      <li><a href="#chartContainer">نمودار</a></li>
+      <li><a href="#timeline">مسیر رشد</a></li>
+      <li><a href="#about">درباره ما</a></li>
+      <li><a href="blog.html">وبلاگ</a></li>
+      <li><a href="portfolio.html">نمونه کارها</a></li>
+      <li><a href="index.html">صفحه اصلی</a></li>
+    </ul>
+  </nav>
+  <div class="hamburger" id="hamburger"><div></div><div></div><div></div></div>
+</header>
+
+<!-- معرفی -->
+<section id="about">
+  <h2>معرفی</h2>
+  <div class="three-cards-container">
+    <div class="three-card">
+      <h3>هدف</h3>
+      <p>ارائه راهکارهای خلاقانه، حرفه‌ای و استراتژیک در حوزه گرافیک و تولید محتوا.</p>
+    </div>
+    <div class="three-card">
+      <h3>درباره ما</h3>
+      <p>تیم متخصص، پرانرژی و نوآور با تجربه در طراحی و مدیریت شبکه‌های اجتماعی.</p>
+    </div>
+    <div class="three-card">
+      <h3>مهارت</h3>
+      <p>طراحی گرافیک، تولید محتوا، ادیت حرفه‌ای و توسعه هویت بصری برندها.</p>
+    </div>
+  </div>
+</section>
+
+<!-- تایم لاین -->
+<section id="timeline">
+  <h2>مسیر رشد</h2>
+  <div class="timeline">
+    <div class="timeline-item left"><h3>1402</h3><p>شروع فعالیت ما</p></div>
+    <div class="timeline-item right"><h3>1403</h3><p>همکاری با برندهای بزرگ</p></div>
+    <div class="timeline-item left"><h3>1404</h3><p>گسترش تیم و پروژه‌ها</p></div>
+  </div>
+</section>
+
+<!-- نمودار -->
+<section id="chartContainer">
+  <h2>نمودار رشد</h2>
+  <canvas id="myChart"></canvas>
+</section>
+
+<!-- نظرات -->
+<section id="feedback">
+  <h2>نظر کاربران</h2>
+  <div class="feedback-list" id="feedbackList">
+    <div class="feedback-card">⭐⭐⭐⭐⭐ کارشون عالی بود!</div>
+    <div class="feedback-card">⭐⭐⭐⭐⭐ پشتیبانی سریع داشتند.</div>
+    <div class="feedback-card">⭐⭐⭐⭐ کیفیت کار خوب بود.</div>
+    <div class="feedback-card">⭐⭐⭐ کمی دیر ارسال شد.</div>
+    <div class="feedback-card">⭐⭐⭐⭐⭐ خیلی حرفه‌ای 👌</div>
+  </div>
+</section>
+
+<!-- پلن خرید -->
+<section id="pricing">
+  <h2>پلن خرید</h2>
+  <div class="pricing-container">
+    <div class="pricing-card">
+      <h3>پلن  برنز</h3>
+      <ul>
+        <li></li>
+        <li>5 پروژه</li>
+        <li>پشتیبانی ایمیل</li>
+         <li>پشتیبانی ایمیل</li>
+          <li>پشتیبانی اختصاصی</li>
+         <li></li>
+      </ul>
+      <a href="t.me/CYBBENCODE">خرید</a>
+    </div>
+    <div class="pricing-card">
+      <h3>پلن نقره ای</h3>
+      <ul>
+         <li></li>
+        <li>10 پروژه</li>
+        <li>پشتیبانی 24 ساعته</li>
+         <li>پشتیبانی ایمیل</li>
+          <li>پشتیبانی اختصاصی</li>
+          <li></li>
+      </ul>
+      <a href="t.me/CYBBENCODE">خرید</a>
+    </div>
+    <div class="pricing-card">
+      <h3>پلن طلایی</h3>
+      <ul>
+        <li></li>
+        <li>نامحدود پروژه</li>
+        <li>پشتیبانی اختصاصی</li>
+         <li>پشتیبانی اختصاصی</li>
+          <li>پشتیبانی اختصاصی</li>
+        <li></li>
+      </ul>
+      <a href="t.me/CYBBENCODE">خرید</a>
+    </div>
+  </div>
+</section>
+
+<!-- دانلود رزومه -->
+<section id="resume">
+  <div class="resume-btn">
+    <a href="assets/resume.pdf" download>📄 دانلود رزومه</a>
+  </div>
+</section>
+
+<footer style="text-align:center;padding:20px;color:#888;">
+تمام حقوق این سایت محفوظ است | CYCODE.AI
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+// منوی همبرگر
+const hamburger=document.getElementById('hamburger');
+const navMenu=document.getElementById('navMenu');
+hamburger.addEventListener('click',()=>{navMenu.classList.toggle('active');});
+
+// نمودار
+const ctx = document.getElementById('myChart').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['1402','1403','1404','1405','1406'],
+        datasets: [{
+            label: 'رشد پروژه‌ها',
+            data: [3,7,12,18,25],
+            borderColor:'#0ff',
+            backgroundColor:'rgba(0,255,255,0.2)',
+            tension:0.4
+        }]
+    },
+    options: {
+        responsive:true,
+        plugins:{legend:{labels:{color:'#0ff'}}},
+        scales:{x:{ticks:{color:'#0ff'}},y:{ticks:{color:'#0ff'}}}
+    }
+});
+</script>
+
+</body>
+</html>

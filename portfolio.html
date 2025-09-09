@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نمونه کارها | CYCODE.AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Vazirmatn',sans-serif;}
+body{background:#0a0a0a;color:#fff;overflow-x:hidden;scroll-behavior:smooth;}
+
+/* Header */
+header{position:fixed;width:100%;background:rgba(0,0,0,0.85);backdrop-filter:blur(12px);z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:15px 30px;}
+header h1{color:#0ff;font-size:1.2rem;}
+nav ul{display:flex;list-style:none;gap:15px;}
+nav ul li a{color:#fff;text-decoration:none;padding:8px 12px;border-radius:10px;transition:0.3s;background:rgba(255,255,255,0.05);}
+nav ul li a:hover{background:rgba(255,255,255,0.2);color:#0ff;}
+.hamburger{display:none;cursor:pointer;flex-direction:column;gap:5px;}
+.hamburger div{width:28px;height:3px;background:#0ff;transition:0.3s;}
+nav .search-box{position:relative;}
+nav .search-box input{padding:5px 10px;border-radius:12px;border:none;outline:none;display:none;}
+nav .search-box input.show{display:block;position:absolute;right:0;top:40px;background:#222;color:#fff;}
+
+/* Sections */
+section{padding:100px 20px 60px;}
+h2{color:#0ff;text-align:center;margin-bottom:30px;font-size:1.5rem;}
+
+/* نمونه کارها */
+.portfolio-container,.video-container{display:flex;gap:20px;padding:20px;overflow:hidden;white-space:nowrap;}
+.portfolio-card,.video-item{min-width:220px;height:150px;border-radius:12px;overflow:hidden;background:rgba(255,255,255,0.05);flex-shrink:0;transition:0.3s;}
+.portfolio-card img,.video-item video{width:100%;height:100%;object-fit:cover;border-radius:12px;transition:0.4s;}
+.portfolio-card:hover,.video-item:hover{transform:scale(1.05);box-shadow:0 0 25px rgba(0,255,255,0.5);}
+.video-item video{border-radius:12px;}
+
+/* Scrollbar */
+::-webkit-scrollbar{height:8px;}
+::-webkit-scrollbar-track{background:#111;border-radius:10px;}
+::-webkit-scrollbar-thumb{background:#0ff;border-radius:10px;}
+::-webkit-scrollbar-thumb:hover{background:#0aa;}
+
+/* Footer */
+footer{padding:25px;text-align:center;background:#111;color:#777;position:relative;}
+footer a{color:#0ff;text-decoration:none;}
+
+/* Responsive */
+@media(max-width:768px){
+  nav ul{display:none;flex-direction:column;background:rgba(0,0,0,0.95);position:absolute;top:70px;right:25px;padding:12px;border-radius:12px;}
+  nav ul.active{display:flex;}
+  .hamburger{display:flex;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>CYCODE.AI | نمونه کارها</h1>
+  <nav>
+    <ul id="navMenu">
+      <li><a href="index.html">صفحه اصلی</a></li>
+      <li><a href="portfolio.html">نمونه کارها</a></li>
+      <li><a href="blog.html">وبلاگ</a></li>
+    </ul>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="جستجو...">
+    </div>
+  </nav>
+  <div class="hamburger" id="hamburger"><div></div><div></div><div></div></div>
+</header>
+
+<section id="portfolio">
+  <h2>نمونه کارها - تصاویر</h2>
+  <div class="portfolio-container" id="portfolioRow"></div>
+</section>
+
+<section id="videos">
+  <h2>نمونه کارها - ویدیوها</h2>
+  <div class="video-container" id="videoRow"></div>
+</section>
+
+<footer>
+  تمام حقوق این سایت محفوظ است © 2025 | <a href="index.html">بازگشت به صفحه اصلی</a>
+</footer>
+
+<script>
+// منوی همبرگری
+const hamburger=document.getElementById('hamburger');
+const navMenu=document.getElementById('navMenu');
+hamburger.addEventListener('click',()=>{navMenu.classList.toggle('active');});
+
+// جستجو
+const searchInput=document.getElementById('searchInput');
+document.addEventListener('keydown',(e)=>{
+  if(e.key==="s"){searchInput.classList.toggle('show'); searchInput.focus();}
+});
+
+// ایجاد نمونه کارها
+const portfolioRow=document.getElementById('portfolioRow');
+for(let i=1;i<=40;i++){
+  let div=document.createElement('div');
+  div.className='portfolio-card';
+  div.innerHTML='<img src="assets/images/sample'+i+'.jpg" alt="نمونه کار">';
+  portfolioRow.appendChild(div);
+}
+// ایجاد ویدیوها
+const videoRow=document.getElementById('videoRow');
+for(let i=1;i<=10;i++){
+  let div=document.createElement('div');
+  div.className='video-item';
+  div.innerHTML='<video src="assets/videos/video'+i+'.mp4" muted autoplay loop></video>';
+  videoRow.appendChild(div);
+}
+
+// Auto-scroll برای تصاویر و ویدیوها
+function autoScroll(container, speed){
+  let scrollPos=0;
+  function step(){
+    scrollPos+=speed;
+    if(scrollPos>=container.scrollWidth) scrollPos=0;
+    container.scrollLeft=scrollPos;
+    requestAnimationFrame(step);
+  }
+  step();
+}
+autoScroll(portfolioRow, 0.5);
+autoScroll(videoRow, 0.3);
+</script>
+
+</body>
+</html>
